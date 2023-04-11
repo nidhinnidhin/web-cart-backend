@@ -20,12 +20,7 @@ class WishlistView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 class WishlistListing(generics.ListCreateAPIView):
-    # def get_queryset(self):
-    #     user = self.request.user
-    #     wishlists = Wishlist.objects.filter(buyer = user)
-    #     return wishlists
     queryset = Wishlist.objects.all()
-
     serializer_class = WishlistListingSerializer
     permission_classes = [OwnerOrAdmin]
 

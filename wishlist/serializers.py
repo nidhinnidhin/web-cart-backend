@@ -26,22 +26,17 @@ class WishlistListingSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         request = self.context.get('request')
 
-        if Wishlist.objects.filter(buyer = request.user, product = validated_data["product"]).exists():
-            wishlist = Wishlist.objects.get(buyer = request.user, product = validated_data["product"])
-
+        if Wishlist.objects.filter(buyer = request.user, product = validated_data["product"]):
+            wishlist = Wishlist()
+            wishlist.buyer = request.user
+            wishlist.product = validated_data["product"]
             wishlist.save()
-
-            return wishlist
-
-        try:
-            wishlist = Wishlist.objects.get(buyer = request.user, product = validated_data["product"])
-        except Wishlist.DoesNotExist:
-            raise Http404
+        return wishlist
 
     class Meta:
         product = ProductListCreateSerializer (read_only=True, many=True)
         model = Wishlist
-        fields = ["product","id"]    
+        fields = ["product"]    
 
 class WishlistDeleteSerializer(serializers.ModelSerializer):
     class Meta:

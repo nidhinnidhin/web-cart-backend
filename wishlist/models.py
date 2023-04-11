@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from products.models import Product
 
 class Wishlist(models.Model):
-    buyer = models.ForeignKey(User, on_delete = models.CASCADE)
+    buyer = models.ForeignKey(User, on_delete = models.RESTRICT)
     product = models.ForeignKey(Product, on_delete = models.RESTRICT)
 
     def __str__(self):
