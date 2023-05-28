@@ -25,3 +25,8 @@ class AddressSerializer(serializers.ModelSerializer):
         address.save()
 
         return address
+
+class AddressEditSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = ["fullName","addressLine1","addressLine2","city","country","pincode","mobile"]

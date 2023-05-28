@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'address',
     'checkout',
     'wishlist',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -168,7 +169,6 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=30),
 }
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -202,3 +202,4 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "nidhinbabu171@gmail.com"
 EMAIL_HOST_PASSWORD = "bvmptduvbcundzpr"
+ 
