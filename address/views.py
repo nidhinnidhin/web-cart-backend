@@ -18,9 +18,9 @@ class AddressList(generics.ListCreateAPIView):
 class AddressEditView(APIView):
     def put(self, request):
         user = self.request.user
-        user.fullName = request.data["fullname"]
-        user.addressLine1 = request.data["addressline1"]
-        user.addressLine2 = request.data["addressline2"]
+        user.fullName = request.data["fullName"]
+        user.addressLine1 = request.data["addressLine1"]
+        user.addressLine2 = request.data["addressLine2"]
         user.city = request.data["city"]
         user.country = request.data["country"]
         user.pincode = request.data["pincode"]
@@ -34,15 +34,15 @@ class AddressEditView(APIView):
 
 class AddressDetailView(APIView):
     def get(self,request):
-        user = self.request.user.Address
+        address = Address
         data = {
-            "fullname":user.fullName,
-            "addressline1": user.addressLine1,
-            "addressline2": user.addressLine2,
-            "city": user.city,
-            "country": user.country,
-            "pincode": user.pincode,
-            "mobile": user.mobile,
+            "fullname":address.fullName,
+            "addressline1": address.addressLine1,
+            "addressline2": address.addressLine2,
+            "city": address.city,
+            "country": address.country,
+            "pincode": address.pincode,
+            "mobile": address.mobile,
         }
         return Response(data)
     permission_classes = [permissions.IsAuthenticated]

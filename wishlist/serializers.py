@@ -25,12 +25,10 @@ class wishlistSerializer(serializers.ModelSerializer):
 class WishlistListingSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         request = self.context.get('request')
-
-        if Wishlist.objects.filter(buyer = request.user, product = validated_data["product"]):
-            wishlist = Wishlist()
-            wishlist.buyer = request.user
-            wishlist.product = validated_data["product"]
-            wishlist.save()
+        wishlist = Wishlist()
+        wishlist.buyer = request.user
+        wishlist.product = validated_data["product"]
+        wishlist.save()
         return wishlist
 
     class Meta:
